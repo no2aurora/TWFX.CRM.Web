@@ -23,7 +23,7 @@
 </template>
 
 <script>
-
+    // import {login} from '@/api/modules/user'
     export default {
       data() {
         return {
@@ -52,87 +52,85 @@
           this.$refs.loginData.validate((valid) => {
             if (valid) {
               _this.isLogin = true;
-              let loginParms={"parms":{'username':this.loginData.checkName,'password':this.loginData.checkPass}};
-              _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
+              // login({"parms":{'username':this.loginData.checkName,'password':this.loginData.checkPass}})
 
-              })
-              _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
-                  //登录信息
-                  let mInfoSplit = res.mInfo.split(',');
-                  let user = {
-                    checkName: _this.loginData.checkName,
-                    employeeName: decodeURIComponent(mInfoSplit[3]),
-                    employeeImg: mInfoSplit[4],
-                    mKey: res.mKey,
-                    mInfo: res.mInfo,
-                  };
-                  //菜单信息
-                  let menuList = res.menuList;
-                  if (_this.$router.options.routes.length <= 1) {
-                    //路由菜单
-                    let twfxMenu = [];
-                    //一级菜单
-                    let menuOneList = _this.Enumerable.from(menuList).where(p => p.PARENTMENUID == null || p.PARENTMENUID == 0).orderBy(o => o.MENUSORT).toArray();
-                    //二级菜单
-                    let menuTwoList = _this.Enumerable.from(menuList).where(p => p.PARENTMENUID != null && p.PARENTMENUID != 0).toArray();
-                    //循环
-                    for (let i = 0; i < menuOneList.length; i++) {
-                      let curMenu = menuOneList[i];
-                      //二级菜单
-                      let child = [];
-                      let curTowList = _this.Enumerable.from(menuTwoList).where(p => p.PARENTMENUID == curMenu.MENUID).orderBy(o => o.MENUSORT).toArray();
-                      for (let ch = 0; ch < curTowList.length; ch++) {
-                        let curMenuChild = curTowList[ch];
-                        let childMenu = {
-                          path: curMenuChild.MENUURL,
-                          name: curMenuChild.MENUNAME,
-                          iconCls: curMenuChild.MENUICON,
-                          hidden: curMenuChild.MENUHIDDEN == 'Y' ? true : false,
-                          component: _this.$VueList[curMenuChild.COMPONENT],
-                          meta: {},
-                        };
-                        child.push(childMenu);
-                      }
-                      let menu = {
-                        path: curMenu.MENUURL,
-                        name: curMenu.MENUNAME,
-                        iconCls: curMenu.MENUICON,
-                        hidden: curMenu.MENUHIDDEN == 'Y' ? true : false,
-                        component: resolve => require(['@/components/MasterPage.vue'], resolve),
-                        children: child,
-                      };
-                      twfxMenu.push(menu);
-                    }
-                    let menu404 = {
-                      path: '*',
-                      hidden: true,
-                      redirect: '/Error',
-                    };
-                    twfxMenu.push(menu404);
-                    _this.$router.addRoutes(twfxMenu);
-                    // this.$router不是响应式的，所以手动将路由元注入路由对象
-                    for (let i = 0; i < twfxMenu.length; i++) {
-                      _this.$router.options.routes.push(twfxMenu[i]);
-                    }
-                  }
-                  let existMenu = sessionStorage.getItem('twfxmenu');
-                  if (existMenu != null)
-                    sessionStorage.removeItem('twfxmenu');
-                  let existUser = sessionStorage.getItem('twfxuser');
-                  if (existUser != null)
-                    sessionStorage.removeItem('twfxuser');
-                  sessionStorage.setItem('twfxmenu', JSON.stringify(menuList));
-                  sessionStorage.setItem('twfxuser', JSON.stringify(user));
-                  //记住用户名
-                  let existLg = localStorage.getItem('loginName');
-                  if (existLg != null)
-                    localStorage.removeItem('loginName');
-                  localStorage.setItem('loginName', _this.loginData.checkName);
-                  _this.$router.push({path: '/Home'});
-              }) .catch(function (error) {
-                _this.$message.error('用户名或密码错误！');
-                _this.isLogin = false;
-              });
+              // _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
+              //     //登录信息
+              //     let mInfoSplit = res.mInfo.split(',');
+              //     let user = {
+              //       checkName: _this.loginData.checkName,
+              //       employeeName: decodeURIComponent(mInfoSplit[3]),
+              //       employeeImg: mInfoSplit[4],
+              //       mKey: res.mKey,
+              //       mInfo: res.mInfo,
+              //     };
+              //     //菜单信息
+              //     let menuList = res.menuList;
+              //     if (_this.$router.options.routes.length <= 1) {
+              //       //路由菜单
+              //       let twfxMenu = [];
+              //       //一级菜单
+              //       let menuOneList = _this.Enumerable.from(menuList).where(p => p.PARENTMENUID == null || p.PARENTMENUID == 0).orderBy(o => o.MENUSORT).toArray();
+              //       //二级菜单
+              //       let menuTwoList = _this.Enumerable.from(menuList).where(p => p.PARENTMENUID != null && p.PARENTMENUID != 0).toArray();
+              //       //循环
+              //       for (let i = 0; i < menuOneList.length; i++) {
+              //         let curMenu = menuOneList[i];
+              //         //二级菜单
+              //         let child = [];
+              //         let curTowList = _this.Enumerable.from(menuTwoList).where(p => p.PARENTMENUID == curMenu.MENUID).orderBy(o => o.MENUSORT).toArray();
+              //         for (let ch = 0; ch < curTowList.length; ch++) {
+              //           let curMenuChild = curTowList[ch];
+              //           let childMenu = {
+              //             path: curMenuChild.MENUURL,
+              //             name: curMenuChild.MENUNAME,
+              //             iconCls: curMenuChild.MENUICON,
+              //             hidden: curMenuChild.MENUHIDDEN == 'Y' ? true : false,
+              //             component: _this.$VueList[curMenuChild.COMPONENT],
+              //             meta: {},
+              //           };
+              //           child.push(childMenu);
+              //         }
+              //         let menu = {
+              //           path: curMenu.MENUURL,
+              //           name: curMenu.MENUNAME,
+              //           iconCls: curMenu.MENUICON,
+              //           hidden: curMenu.MENUHIDDEN == 'Y' ? true : false,
+              //           component: resolve => require(['@/components/MasterPage.vue'], resolve),
+              //           children: child,
+              //         };
+              //         twfxMenu.push(menu);
+              //       }
+              //       let menu404 = {
+              //         path: '*',
+              //         hidden: true,
+              //         redirect: '/Error',
+              //       };
+              //       twfxMenu.push(menu404);
+              //       _this.$router.addRoutes(twfxMenu);
+              //       // this.$router不是响应式的，所以手动将路由元注入路由对象
+              //       for (let i = 0; i < twfxMenu.length; i++) {
+              //         _this.$router.options.routes.push(twfxMenu[i]);
+              //       }
+              //     }
+              //     let existMenu = sessionStorage.getItem('twfxmenu');
+              //     if (existMenu != null)
+              //       sessionStorage.removeItem('twfxmenu');
+              //     let existUser = sessionStorage.getItem('twfxuser');
+              //     if (existUser != null)
+              //       sessionStorage.removeItem('twfxuser');
+              //     sessionStorage.setItem('twfxmenu', JSON.stringify(menuList));
+              //     sessionStorage.setItem('twfxuser', JSON.stringify(user));
+              //     //记住用户名
+              //     let existLg = localStorage.getItem('loginName');
+              //     if (existLg != null)
+              //       localStorage.removeItem('loginName');
+              //     localStorage.setItem('loginName', _this.loginData.checkName);
+              //     _this.$router.push({path: '/Home'});
+              // }) .catch(function (error) {
+              //   _this.$message.error('用户名或密码错误！');
+              //   _this.isLogin = false;
+              // });
             }
             else
               return false;
