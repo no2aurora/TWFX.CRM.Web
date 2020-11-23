@@ -8,11 +8,12 @@ import moment from 'moment';
 import linq from 'linq';
 import 'babel-polyfill';
 
-import {http_Get,http_Post,http_PostUp} from './api/Api.js'
+import {http_Get,http_Post,http_PostUp} from './api/ApiWrapper.js'
 import routes from './router/index.js'
 import vueList from './router/menu.js'
 import global from './global.js'
 import App from './App'
+import store from './store'
 
 
 //启动是否产生提示
@@ -24,6 +25,7 @@ Vue.prototype.Enumerable =linq;
 Vue.prototype.$VueList=vueList;
 Vue.prototype.Global=global;
 Vue.prototype.myMoment=moment;
+Vue.prototype.store = store
 
 //日期过滤器
 Vue.filter('moment', function (value, formatString) {

@@ -18,7 +18,7 @@
       <!--<el-button @click="handleReset('loginData')">重置</el-button>-->
     </el-form-item>
   </el-form>
-    <div style="text-align: center; margin:10px 0px; font-size: 12px;">2018 © 天仙仓储管理系统-V1.0</div>
+    <div style="text-align: center; margin:10px 0px; font-size: 12px;">2021 无名仓储管理系统-V1.0.0</div>
   </div>
 </template>
 
@@ -52,9 +52,11 @@
           this.$refs.loginData.validate((valid) => {
             if (valid) {
               _this.isLogin = true;
-              let loginParms={"parms":{'checkName':this.loginData.checkName,'checkPwd':this.loginData.checkPass}};
-              _this.$httpGet('Login/UserLogin',loginParms).then((res)=> {
-                if (res.loginStatus) {
+              let loginParms={"parms":{'username':this.loginData.checkName,'password':this.loginData.checkPass}};
+              _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
+
+              })
+              _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
                   //登录信息
                   let mInfoSplit = res.mInfo.split(',');
                   let user = {
@@ -127,15 +129,6 @@
                     localStorage.removeItem('loginName');
                   localStorage.setItem('loginName', _this.loginData.checkName);
                   _this.$router.push({path: '/Home'});
-                }
-                else {
-                  if (res.loginMessage != 'undefined' && res.loginMessage != null
-                    && res.loginMessage != '')
-                    _this.$message.error('系统授权已到期！');
-                  else
-                    _this.$message.error('用户名或密码错误！');
-                  _this.isLogin = false;
-                }
               }) .catch(function (error) {
                 _this.$message.error('用户名或密码错误！');
                 _this.isLogin = false;
