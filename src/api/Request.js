@@ -48,7 +48,7 @@ service.interceptors.response.use(
         if (res.code !== 1) {
           // 非5xx的错误属于业务错误，留给具体页面处理
           Message({
-            message: '失败:' + res.msg,
+            message: res.msg,
             type: 'warning'
           })
           // return Promise.reject(response)
