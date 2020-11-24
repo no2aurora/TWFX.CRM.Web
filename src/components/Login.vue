@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    // import {login} from '@/api/modules/user'
+    import {login} from '@/api/modules/user'
     export default {
       data() {
         return {
@@ -52,7 +52,7 @@
           this.$refs.loginData.validate((valid) => {
             if (valid) {
               _this.isLogin = true;
-              // login({"parms":{'username':this.loginData.checkName,'password':this.loginData.checkPass}})
+              login({'username':this.loginData.checkName,'password':this.loginData.checkPass})
 
               // _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
               //     //登录信息

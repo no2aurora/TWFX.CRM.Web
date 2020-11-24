@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    auth: user
+    user: user
   },
   getters
 })

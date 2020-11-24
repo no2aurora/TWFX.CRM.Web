@@ -5,7 +5,7 @@ import { getToken } from './CookieService'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.SERVER_ADDR + ':' + process.env.SERVER_PORT, // api 的 base_url
+  baseURL: process.env.SERVER_ADDR, // api 的 base_url
   timeout: 10000 // request timeout
 })
 
