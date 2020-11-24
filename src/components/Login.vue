@@ -55,7 +55,6 @@
               _this.isLogin = true;
               let loginResult = login({'username':this.loginData.checkName,'password':this.loginData.checkPass})
               loginResult.then(res => {
-                console.log(_this.$store.getters.token)
                 _this.$store.commit('token', res.data)
                 setToken(res.data)
               })

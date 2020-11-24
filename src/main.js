@@ -17,15 +17,15 @@ import store from './store'
 
 
 //启动是否产生提示
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 //资源使用
-Vue.use(ElementUI);
-Vue.use(VueRouter);
-Vue.prototype.Enumerable =linq;
-Vue.prototype.$VueList=vueList;
-Vue.prototype.Global=global;
-Vue.prototype.myMoment=moment;
-Vue.prototype.$store=store;
+Vue.use(ElementUI)
+Vue.use(VueRouter)
+Vue.prototype.Enumerable =linq
+Vue.prototype.$VueList=vueList
+Vue.prototype.Global=global
+Vue.prototype.myMoment=moment
+Vue.prototype.$store=store
 
 //日期过滤器
 Vue.filter('moment', function (value, formatString) {
