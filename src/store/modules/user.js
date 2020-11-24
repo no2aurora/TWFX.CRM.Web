@@ -7,6 +7,9 @@ const user = {
     token(state, token) {
       state.token = token
     }
+  },
+  getters : {
+    token: state => state.token
   }
 }
 /**
