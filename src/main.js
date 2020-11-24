@@ -25,7 +25,7 @@ Vue.prototype.Enumerable =linq;
 Vue.prototype.$VueList=vueList;
 Vue.prototype.Global=global;
 Vue.prototype.myMoment=moment;
-Vue.prototype.store = store
+Vue.prototype.$store=store;
 
 //日期过滤器
 Vue.filter('moment', function (value, formatString) {
@@ -83,6 +83,7 @@ router.beforeEach((to, from, next) => {
 var vm=new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 });

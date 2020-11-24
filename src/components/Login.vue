@@ -24,6 +24,7 @@
 
 <script>
     import {login} from '@/api/modules/user'
+    import {setToken} from "../api/CookieService";
     export default {
       data() {
         return {
@@ -52,8 +53,12 @@
           this.$refs.loginData.validate((valid) => {
             if (valid) {
               _this.isLogin = true;
-              login({'username':this.loginData.checkName,'password':this.loginData.checkPass})
-
+              let loginResult = login({'username':this.loginData.checkName,'password':this.loginData.checkPass})
+              loginResult.then(res => {
+                _this.$store.commit('token', res.data)
+                setToken(res.data)
+              })
+              _this.isLogin = false;
               // _this.$httpPost('Login/UserLogin',loginParms).then((res)=> {
               //     //登录信息
               //     let mInfoSplit = res.mInfo.split(',');

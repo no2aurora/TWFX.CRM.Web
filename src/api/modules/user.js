@@ -1,5 +1,4 @@
 import request from '../Request'
-import { Message, MessageBox } from 'element-ui'
 import {setToken} from '../CookieService'
 
 /**
@@ -7,8 +6,5 @@ import {setToken} from '../CookieService'
  * @param param
  */
 export function login(param) {
-  request.post('/api/login', param).then(res => {
-    this.store.user.commit('', res.data)
-    setToken(res.data)
-  })
+  return request.post('/api/login', param)
 }
