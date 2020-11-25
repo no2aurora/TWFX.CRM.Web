@@ -1,4 +1,4 @@
-import request from './Request'
+import request from './request'
 
 //Request拦截器
 request.interceptors.request.use(

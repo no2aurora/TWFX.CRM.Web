@@ -1,5 +1,5 @@
-import request from '../Request'
-import {setToken} from '../CookieService'
+import request from '../request'
+import {setToken} from '../cookie-service'
 
 /**
  * 登录

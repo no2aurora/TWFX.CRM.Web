@@ -24,7 +24,7 @@
 
 <script>
     import {login} from '@/api/modules/user'
-    import {setToken} from "../api/CookieService";
+    import {setToken} from "../api/cookie-service";
     export default {
       data() {
         return {

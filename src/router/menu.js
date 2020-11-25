@@ -1,66 +1,66 @@
 //母版页
-import MasterPage from '@/components/MasterPage'
-import Home from '@/components/Home'
-import Error from '@/components/Error'
+const MasterPage  = () => import('@/components/MasterPage')
+const Home = () => import('@/components/Home')
+const Error = () => import('@/components/Error')
 
 //产品组件
-import ProductType from '@/components/product/ProductType'
-import ProductList from '@/components/product/ProductList'
-import ProductStopList from '@/components/product/ProductStopList'
+const ProductType = () => import('@/components/product/ProductType')
+const ProductList = () => import('@/components/product/ProductList')
+const ProductStopList = () => import('@/components/product/ProductStopList')
 
 //商户组件
-import BrandList from '@/components/trader/BrandList'
-import TraderList from '@/components/trader/TraderList'
-import BunkList from '@/components/trader/BunkList'
-import BunkEdit from '@/components/trader/BunkEdit'
-import TraderMap from '@/components/trader/TraderMap'
-import Bunklevel from '@/components/trader/Bunklevel'
+const BrandList = () => import('@/components/trader/BrandList')
+const TraderList = () => import('@/components/trader/TraderList')
+const BunkList = () => import('@/components/trader/BunkList')
+const BunkEdit = () => import('@/components/trader/BunkEdit')
+const TraderMap = () => import('@/components/trader/TraderMap')
+const Bunklevel = () => import('@/components/trader/Bunklevel')
 
 //系统管理组件
-import RolesList from '@/components/system/RolesList'
-import UserList from '@/components/system/UserList'
-import MenuList from '@/components/system/MenuList'
-import DepartList from '@/components/system/DepartList'
+const RolesList = () => import('@/components/system/RolesList')
+const UserList = () => import('@/components/system/UserList')
+const MenuList = () => import('@/components/system/MenuList')
+const DepartList = () => import('@/components/system/DepartList')
 
 //采购管理
-import PurchaseSupplier from '@/components/purchase/PurchaseSupplier'
-import PurchaseList from '@/components/purchase/PurchaseList'
-import PurchaseDetailList from '@/components/purchase/PurchaseDetailList'
+const PurchaseSupplier = () => import('@/components/purchase/PurchaseSupplier')
+const PurchaseList = () => import('@/components/purchase/PurchaseList')
+const PurchaseDetailList = () => import( '@/components/purchase/PurchaseDetailList')
 
 //库存管理
-import StockList from '@/components/stock/StockList'
-import StockDetailList from '@/components/stock/StockDetailList'
-import StockInList from '@/components/stock/StockInList'
-import StockInDetailList from '@/components/stock/StockInDetailList'
-import StockOutList from '@/components/stock/StockOutList'
-import StockOutDetailList from '@/components/stock/StockOutDetailList'
-import StockBadList from '@/components/stock/StockBadList'
-import StockCheckList from '@/components/stock/StockCheckList'
-import StockAssembleList from '@/components/stock/StockAssembleList'
-import StockDisassemblyList from '@/components/stock/StockDisassemblyList'
+const StockList = () => import('@/components/stock/StockList')
+const StockDetailList = () => import('@/components/stock/StockDetailList')
+const StockInList = () => import('@/components/stock/StockInList')
+const StockInDetailList = () => import('@/components/stock/StockInDetailList')
+const StockOutList = () => import('@/components/stock/StockOutList')
+const StockOutDetailList = () => import('@/components/stock/StockOutDetailList')
+const StockBadList = () => import('@/components/stock/StockBadList')
+const StockCheckList = () => import('@/components/stock/StockCheckList')
+const StockAssembleList = () => import('@/components/stock/StockAssembleList')
+const StockDisassemblyList = () => import('@/components/stock/StockDisassemblyList')
 
 //销售管理
-import SellList from '@/components/sell/SellList'
-import SellDetailList from '@/components/sell/SellDetailList'
-import SellReturnList from '@/components/sell/SellReturnList'
-import SellReturnDetailList from '@/components/sell/SellReturnDetailList'
+const SellList = () => import('@/components/sell/SellList')
+const SellDetailList = () => import('@/components/sell/SellDetailList')
+const SellReturnList = () => import('@/components/sell/SellReturnList')
+const SellReturnDetailList = () => import('@/components/sell/SellReturnDetailList')
 
 //报表分析
-import PurchaseStatistics from '@/components/report/PurchaseStatistics'
-import BunkStatistics from '@/components/report/BunkStatistics'
-import SellAreaStatistics from '@/components/report/SellAreaStatistics'
-import SellMonthStatistics from '@/components/report/SellMonthStatistics'
+const PurchaseStatistics = () => import('@/components/report/PurchaseStatistics')
+const BunkStatistics = () => import('@/components/report/BunkStatistics')
+const SellAreaStatistics = () => import('@/components/report/SellAreaStatistics')
+const SellMonthStatistics = () => import('@/components/report/SellMonthStatistics')
 
 //基础设置
-import SystemSetting from '@/components/base/SystemSetting'
-import MeterUnitList from '@/components/base/MeterUnitList'
-import StorageList from '@/components/base/StorageList'
-import StorageLoList from '@/components/base/StorageLoList'
+const SystemSetting = () => import('@/components/base/SystemSetting')
+const MeterUnitList = () => import('@/components/base/MeterUnitList')
+const StorageList = () => import('@/components/base/StorageList')
+const StorageLoList = () => import('@/components/base/StorageLoList')
 
 //财务管理
-import BillList from '@/components/payment/BillList'
-import BillRecordList from '@/components/payment/BillRecordList'
-import PayList from '@/components/payment/PayList'
+const BillList = () => import('@/components/payment/BillList')
+const BillRecordList = () => import('@/components/payment/BillRecordList')
+const PayList = () => import('@/components/payment/PayList')
 
 
 
