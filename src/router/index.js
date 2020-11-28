@@ -1,5 +1,5 @@
 
-import Login from '@/components/Login'
+const Login = () => import('@/components/Login')
 
 let routes = [
   {
