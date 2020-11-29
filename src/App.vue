@@ -25,32 +25,32 @@ export default {
         //路由菜单
         var twfxMenu = [];
         //一级菜单
-        var menuOneList = this.Enumerable.from(menuList).where(p => p.PARENTMENUID == null || p.PARENTMENUID == 0).orderBy(o => o.MENUSORT).toArray();
+        var menuOneList = this.Enumerable.from(menuList).where(p => p.parentId == null || p.parentId == 0).orderBy(o => o.sortKey).toArray();
         //二级菜单
-        var menuTwoList = this.Enumerable.from(menuList).where(p => p.PARENTMENUID != null && p.PARENTMENUID != 0).toArray();
+        var menuTwoList = this.Enumerable.from(menuList).where(p => p.parentId != null && p.parentId != 0).toArray();
         //循环
         for (var i = 0; i < menuOneList.length; i++) {
           var curMenu = menuOneList[i];
           //二级菜单
           let child = [];
-          var curTowList = this.Enumerable.from(menuTwoList).where(p => p.PARENTMENUID == curMenu.MENUID).orderBy(o => o.MENUSORT).toArray();
+          var curTowList = this.Enumerable.from(menuTwoList).where(p => p.parentId == curMenu.id).orderBy(o => o.sortKey).toArray();
           for (var ch = 0; ch < curTowList.length; ch++) {
             var curMenuChild = curTowList[ch];
             var childMenu = {
-              path: curMenuChild.MENUURL,
-              name: curMenuChild.MENUNAME,
-              iconCls: curMenuChild.MENUICON,
-              hidden: curMenuChild.MENUHIDDEN == 'Y' ? true : false,
+              path: curMenuChild.url,
+              name: curMenuChild.name,
+              iconCls: curMenuChild.iconCls,
+              hidden: curMenuChild.isHidden === 1,
               component: this.$VueList[curMenuChild.COMPONENT],
               meta: {},
             };
             child.push(childMenu);
           }
           let menu = {
-            path: curMenu.MENUURL,
-            name: curMenu.MENUNAME,
-            iconCls: curMenu.MENUICON,
-            hidden: curMenu.MENUHIDDEN == 'Y' ? true : false,
+            path: curMenu.url,
+            name: curMenu.name,
+            iconCls: curMenu.iconCls,
+            hidden: curMenu.isHidden === 1,
             component: resolve => require(['@/components/MasterPage.vue'], resolve),
             children: child,
           };
