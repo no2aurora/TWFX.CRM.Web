@@ -10,12 +10,12 @@ request.interceptors.request.use(
         'Content-Type': 'application/json;charset=utf-8'
       };
     }
-    var curUser = sessionStorage.getItem('twfxuser');
-    if(curUser) {
-      var jsonUser = JSON.parse(curUser);
-      config.headers['Content-MKey'] = jsonUser.mKey;
-      config.headers['Content-MInfo'] = jsonUser.mInfo;
-    }
+    // var curUser = sessionStorage.getItem('twfxuser');
+    // if(curUser) {
+    //   var jsonUser = JSON.parse(curUser);
+    //   config.headers['Content-MKey'] = jsonUser.mKey;
+    //   config.headers['Content-MInfo'] = jsonUser.mInfo;
+    // }
     return config;
   }, error => {
     return Promise.reject(error);

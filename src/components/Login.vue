@@ -61,24 +61,26 @@
               _this.isLogin = false;
 
               // 设置用户信息
-              getUserInfo.then(result => {
+              getUserInfo().then(result => {
                 //登录信息
                 let user = {
                   checkName: _this.loginData.checkName,
-                  employeeName: result.realName,
-                  employeeImg: result.logo,
+                  employeeName: result.data.realName,
+                  employeeImg: result.data.logo,
                   // mKey: res.mKey,
                   // mInfo: res.mInfo,
                 };
                 //菜单信息
-                let menuList = result.menuDOS;
+                let menuList = result.data.menuDOS;
                 if (_this.$router.options.routes.length <= 1) {
                   //路由菜单
                   let twfxMenu = [];
                   //一级菜单
-                  let menuOneList = _this.Enumerable.from(menuList).where(p => p.parentId == null || p.parentId == 0).orderBy(o => o.sortKey).toArray();
+                  let menuOneList =
+                    _this.Enumerable.from(menuList).where(p => p.parentId == null || p.parentId === 0).orderBy(o => o.sortKey).toArray();
                   //二级菜单
-                  let menuTwoList = _this.Enumerable.from(menuList).where(p => p.parentId != null && p.parentId != 0).toArray();
+                  let menuTwoList =
+                    _this.Enumerable.from(menuList).where(p => p.parentId != null && p.parentId !== 0).toArray();
                   //循环
                   for (let i = 0; i < menuOneList.length; i++) {
                     let curMenu = menuOneList[i];

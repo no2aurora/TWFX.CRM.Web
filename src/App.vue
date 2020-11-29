@@ -18,8 +18,9 @@ export default {
   //只有本地配置的路由能够跳转。这时候我们可以在app.vue（ps：不论在哪里进行刷新，app.vue都会执行）中执行如下代码
   created() {
     // 当this.$router.options.routes的长度为1，且本地缓存存在菜单列表的时候才重新配置路由
-    let menuList = JSON.parse(sessionStorage.getItem('twfxmenu'));
-    if (menuList != null) {
+    let menuListString = sessionStorage.getItem('twfxmenu')
+    if (menuListString != 'undefined' && menuListString != null) {
+      let menuList = JSON.parse(menuListString);
       if (this.$router.options.routes.length <= 1) {
         //路由菜单
         var twfxMenu = [];

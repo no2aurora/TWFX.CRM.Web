@@ -6,7 +6,7 @@ import {setToken} from '../cookie-service'
  * @param param
  */
 export function login(param) {
-  return request.post('/api/login', param)
+  return request.post('/login', param)
 }
 
 export function getUserInfo() {
