@@ -18,6 +18,7 @@ export default {
   //只有本地配置的路由能够跳转。这时候我们可以在app.vue（ps：不论在哪里进行刷新，app.vue都会执行）中执行如下代码
   created() {
     // 当this.$router.options.routes的长度为1，且本地缓存存在菜单列表的时候才重新配置路由
+    debugger
     let menuListString = sessionStorage.getItem('twfxmenu')
     if (menuListString != 'undefined' && menuListString != null) {
       let menuList = JSON.parse(menuListString);
@@ -25,15 +26,15 @@ export default {
         //路由菜单
         var twfxMenu = [];
         //一级菜单
-        var menuOneList = this.Enumerable.from(menuList).where(p => p.parentId == null || p.parentId == 0).orderBy(o => o.sortKey).toArray();
+        var menuOneList = this.Enumerable.from(menuList).where(p => p.parentId == null || p.parentId === 0).orderBy(o => o.sortKey).toArray();
         //二级菜单
-        var menuTwoList = this.Enumerable.from(menuList).where(p => p.parentId != null && p.parentId != 0).toArray();
+        var menuTwoList = this.Enumerable.from(menuList).where(p => p.parentId != null && p.parentId !== 0).toArray();
         //循环
         for (var i = 0; i < menuOneList.length; i++) {
           var curMenu = menuOneList[i];
           //二级菜单
           let child = [];
-          var curTowList = this.Enumerable.from(menuTwoList).where(p => p.parentId == curMenu.id).orderBy(o => o.sortKey).toArray();
+          var curTowList = this.Enumerable.from(menuTwoList).where(p => p.parentId === curMenu.id).orderBy(o => o.sortKey).toArray();
           for (var ch = 0; ch < curTowList.length; ch++) {
             var curMenuChild = curTowList[ch];
             var childMenu = {
